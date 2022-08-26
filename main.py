@@ -2,7 +2,8 @@ import curses
 from curses import wrapper
 import time 
 import random
-
+from pynput import keyboard
+ 
 def startScrn(stdscr):
     stdscr.clear()
     stdscr.addstr(1,56,"Welcome to the Typing Speed test!")
@@ -49,7 +50,7 @@ def wpmTest(stdscr):
         except:
             continue
 
-        if ord(key) == 27:
+        if key == keyboard.Key.esc:
             break
         if key in ("KEY_BACKSPACE", '\b', "\x7f"):
             if len(curr_text) > 0:
